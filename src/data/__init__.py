@@ -1,1 +1,0 @@
-from qm_datamodule import QMDataModule

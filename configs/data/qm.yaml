@@ -1,5 +1,0 @@
-_target_: src.data.qm_datamodule.QMDataModule
-files_root: /p/project/hai_drug_qm/MiSaTo/data/QM/
-fold: 1
-batch_size: 128
-num_workers: 48

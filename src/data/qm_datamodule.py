@@ -4,8 +4,8 @@ from pytorch_lightning import LightningDataModule
 from torch_geometric.loader import DataLoader
 import torch_geometric.transforms as T
 
-from components.datasets import MolDataset
-from components.transformQM import GNNTransformQM
+from .components.datasets import MolDataset
+from .components.transformQM import GNNTransformQM
 
 class QMDataModule(LightningDataModule):
     """A DataModule implements 4 key methods:

@@ -1,4 +1,0 @@
-_target_: src.data.md_datamodule.MDDataModule
-files_root: /p/project/hai_drug_qm/MiSaTo/data/MD/h5_files/MD_dataset_soft_hard_noH.hdf5
-batch_size: 2
-num_workers: 0
