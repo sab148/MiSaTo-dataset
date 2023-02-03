@@ -24,7 +24,11 @@ class QMDataModule(LightningDataModule):
     def __init__(
         self,
         files_root: str,
-        fold: int,
+        h5file = "h5_files/qm.hdf5",
+        train = "splits/train_norm_fold1.txt",
+        val = "splits/val_norm_fold1.txt",
+        test = "splits/test_norm_fold1.txt",
+        normfile = "h5_files/qm_norm_fold1.hdf5",
         batch_size = 128,
         num_workers = 48,
         transform = T.RandomTranslate(0.05)
@@ -36,22 +40,26 @@ class QMDataModule(LightningDataModule):
         self.save_hyperparameters(logger=False)
 
         self.files_root = files_root
+        self.h5file = h5file
 
-        self.fold = fold
+        self.train = train
+        self.val = val
+        self.test = test
+        self.normfile = normfile
 
         self.batch_size = batch_size
         self.num_workers = num_workers
 
         self.transform = transform 
 
-    def setup(self):
+    def setup(self, stage=None):
         """Load data. Set variables: `self.data_train`, `self.data_val`, `self.data_test`.
 
         """
 
-        self.data_train = MolDataset(os.path.join(self.files_root, "h5_files/qm.hdf5"), os.path.join(self.files_root, "splits/train_norm_fold{}.txt".format(self.fold)), target_norm_file=os.path.join(self.files_root, "h5_files/qm_norm_fold{}.hdf5".format(self.fold)), transform=GNNTransformQM(), post_transform=self.transform)
-        self.data_val = MolDataset(os.path.join(self.files_root, "h5_files/qm.hdf5"), os.path.join(self.files_root, "splits/val_norm_fold{}.txt".format(self.fold)), target_norm_file=os.path.join(self.files_root, "h5_files/qm_norm_fold{}.hdf5".format(self.fold)), transform=GNNTransformQM())
-        self.data_test = MolDataset(os.path.join(self.files_root, "h5_files/qm.hdf5"), os.path.join(self.files_root, "splits/test_norm_fold{}.txt".format(self.fold)), target_norm_file=os.path.join(self.files_root, "h5_files/qm_norm_fold{}.hdf5".format(self.fold)), transform=GNNTransformQM())
+        self.data_train = MolDataset(os.path.join(self.files_root, self.h5file), os.path.join(self.files_root, self.train), target_norm_file=os.path.join(self.files_root, self.normfile), transform=GNNTransformQM(), post_transform=self.transform)
+        self.data_val = MolDataset(os.path.join(self.files_root, self.h5file), os.path.join(self.files_root, self.val), target_norm_file=os.path.join(self.files_root, self.normfile), transform=GNNTransformQM())
+        self.data_test = MolDataset(os.path.join(self.files_root, self.h5file), os.path.join(self.files_root, self.test), target_norm_file=os.path.join(self.files_root, self.normfile), transform=GNNTransformQM())
 
     def train_dataloader(self):
         return DataLoader(

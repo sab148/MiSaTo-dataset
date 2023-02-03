@@ -24,6 +24,10 @@ class MDDataModule(LightningDataModule):
     def __init__(
         self,
         files_root: str,
+        h5file = "h5_files/MD_dataset_soft_hard_noH.hdf5",
+        train = "splits/train_soft_hard.txt",
+        val = "splits/val_soft_hard.txt",
+        test = "splits/test_soft_hard.txt",
         batch_size = 16,
         num_workers = 48,
         transform = T.RandomTranslate(0.05)
@@ -36,19 +40,24 @@ class MDDataModule(LightningDataModule):
 
 
         self.files_root = files_root
+        self.h5file = h5file
+
+        self.train = train
+        self.val = val
+        self.test = test
 
         self.batch_size = batch_size
         self.num_workers = num_workers
         self.transform = transform
         
 
-    def setup(self):
+    def setup(self, stage=None):
         """Load data. Set variables: `self.data_train`, `self.data_val`, `self.data_test`.
         """
 
-        self.data_train = ProtDataset(os.path.join(self.files_root, "h5_files/MD_dataset_soft_hard_noH.hdf5"), os.path.join(self.files_root, "splits/train_soft_hard.txt"), transform=GNNTransformMD(), post_transform=self.transform)
-        self.data_val = ProtDataset(os.path.join(self.files_root, "h5_files/MD_dataset_soft_hard_noH.hdf5"), os.path.join(self.files_root, "splits/val_soft_hard.txt"), transform=GNNTransformMD())
-        self.data_test = ProtDataset(os.path.join(self.files_root, "h5_files/MD_dataset_soft_hard_noH.hdf5"), os.path.join(self.files_root, "splits/test_soft_hard.txt"), transform=GNNTransformMD())
+        self.data_train = ProtDataset(os.path.join(self.files_root, self.h5file), os.path.join(self.files_root, self.train), transform=GNNTransformMD(), post_transform=self.transform)
+        self.data_val = ProtDataset(os.path.join(self.files_root, self.h5file), os.path.join(self.files_root, self.val), transform=GNNTransformMD())
+        self.data_test = ProtDataset(os.path.join(self.files_root, self.h5file), os.path.join(self.files_root, self.test), transform=GNNTransformMD())
 
     def train_dataloader(self):
         return DataLoader(
