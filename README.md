@@ -8,6 +8,9 @@
 
 
 Code base for QM and MD dataset <br>
+  
+We used semi-empirical quantum mechanics to curate every ligand. The refined ligands were extensively simulated in the respective protein pockets in explicit water molecular dynamics simulations. The dataset is made available to the community via simple python data loaders. Structures are enriched with a diverse set of semi-empirical and MD derived properties, for which some AI baseline models are also provided. With our novel and highly curated dataset, we ought to facilitate the generation of future AI models, bridging the gap between in silico and in vivo drug discovery.
+
 
 _Suggestions are always welcome!_
 
