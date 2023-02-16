@@ -15,8 +15,8 @@ In this repository, we show how to load QM and MD dataset (h5 file). You can acc
 
 You can download the FULL dataset from Zenodo using links below:
 
--- MD
--- QM
+- MD
+- QM
  
 _Suggestions are always welcome!_
 
