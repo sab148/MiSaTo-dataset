@@ -39,10 +39,9 @@ _Suggestions are always welcome!_
 
 ## Required packages:
 
-- Pytorch-lightning=1.6.1
-- Pytorch-Geometric=2.0.4
-- PyTorch=1.11
-- h5py=3.5.0
+- torch>=1.10.0
+- pytorch-lightning==1.8.3
+- torch-geometric==2.0.4
 
 <br>
 
