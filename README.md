@@ -77,13 +77,13 @@ git clone https://github.com/sab148/MiSaTo-dataset.git
 cd MiSaTo-dataset
 
 # [OPTIONAL] create virtual environment
-mkdir misato_env
 python3 -m venv misato_env/
+
+# activate the env
+source misato_env/bin/activate
 
 # install requirements
 pip install -r requirements.txt
-
-source misato_env/bin/activate
 ```
 
 You can now go to src/getting_started.ipynb and discover with the MiSaTo dataset.
