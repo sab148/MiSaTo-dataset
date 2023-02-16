@@ -1,6 +1,6 @@
 # --------- pytorch --------- #
 torch>=1.10.0
-pytorch-lightning==1.8.3
+pytorch-lightning==1.9.2
 torch-sparse
 torch_scatter
 torch-geometric==2.0.4
