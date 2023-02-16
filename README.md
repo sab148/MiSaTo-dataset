@@ -12,6 +12,10 @@ Code base for QM and MD dataset <br>
 We present a novel dataset of 16972 protein-ligand structures along with 19443 ligand structures originating from the pdbBind library. We used semi-empirical quantum mechanics to curate every ligand. The refined ligands were extensively simulated in the respective protein pockets in explicit water molecular dynamics simulations. You can use the dataset directly from h5 or via simple PyTorch/pytorch-lightning data loaders. Structures are enriched with a diverse set of semi-empirical and MD derived properties. With our novel and highly curated dataset, we ought to facilitate the generation of future AI models, bridging the gap between in silico and in vivo drug discovery.
 </div>
  
+<br>
+
+## 📌  Introduction 
+ 
 In this repository, we show how to load QM and MD dataset (h5 file). You can access the properties of different structures and use them in Pytorch based dataloaders. We provide a small sample of our dataset along with the repo.
 
 You can download the FULL dataset from Zenodo using links below:
@@ -23,9 +27,7 @@ _Suggestions are always welcome!_
 
 
 
-<br>
 
-## 📌  Introduction
 
 **You can use the notebook src/getting_started.ipynb to :**
 
