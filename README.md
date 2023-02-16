@@ -79,21 +79,12 @@ cd MiSaTo-dataset
 
 # [OPTIONAL] create virtual environment
 mkdir misato_env
-cd misato_env
-
-python3 -m venv .
-
-touch requirements.txt
-
-# Please copy these packages in requirements.txt
-torch 
-torch-geometric
-pytorch-lightning
+python3 -m venv misato_env/
 
 # install requirements
 pip install -r requirements.txt
 
-source bin/activate
+source misato_env/bin/activate
 ```
 
 You can now go to src/getting_started.ipynb and discover with the MiSaTo dataset.
