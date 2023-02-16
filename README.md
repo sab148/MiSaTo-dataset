@@ -77,15 +77,23 @@ _Suggestions are always welcome!_
 git clone https://github.com/sab148/MiSaTo-dataset.git
 cd MiSaTo-dataset
 
-# [OPTIONAL] create conda environment
-conda create -n myenv python=3.9
-conda activate misato
+# [OPTIONAL] create virtual environment
+mkdir misato_env
+cd misato_env
 
-# install pytorch according to instructions
-# https://pytorch.org/get-started/
+python3 -m venv .
+
+touch requirements.txt
+
+# Please copy these packages in requirements.txt
+torch 
+torch-geometric
+pytorch-lightning
 
 # install requirements
 pip install -r requirements.txt
+
+source bin/activate
 ```
 
 You can now go to src/getting_started.ipynb and discover with the MiSaTo dataset.
