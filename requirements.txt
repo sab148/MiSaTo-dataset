@@ -7,3 +7,6 @@ torch-geometric==2.0.4
 h5py
 ipykernel
 ipywidgets
+pytraj
+nglview
+
