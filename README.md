@@ -85,6 +85,16 @@ source misato_env/bin/activate
 # install requirements
 pip install -r requirements.txt
 ```
+Alternatively you can use anaconda to install the environment
+```bash
+
+# create conda env
+
+conda env create -f misato.yml
+# activate the env
+conda activate misato
+
+```
 
 You can now go to src/getting_started.ipynb and discover with the MiSaTo dataset.
 
