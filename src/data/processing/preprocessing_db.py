@@ -231,6 +231,7 @@ if __name__=="__main__":
         count += 1
         print(struct, count)
         h5_entries = get_entries(struct, f, h5_properties)
+        print(h5_entries)
         if not h5_entries["atoms_type"] == None: 
             preprocessing_done = False
             if args.Pres_Lat:
