@@ -206,20 +206,7 @@ def adaptability(h5_entries):
         dist_to_ref_mat[:, ind] = np.sqrt(squared_dist)
     return np.mean(dist_to_ref_mat, axis=1), np.std(dist_to_ref_mat, axis=1), ref 
 
-
-if __name__=="__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-i", "--datasetIn", required=False, help="MISATO dataset path to read from in hdf5 format.", default='MD_dataset_mapped.hdf5', type=str)
-    parser.add_argument("-O", "--datasetOut", required=False, help="Output dataset in hdf5 format.", default='MD_dataset_mapped_stripped.hdf5', type=str)
-    parser.add_argument("-sf", "--strip_feature", required=False, help="Feature that should be stripped, e.g. atoms_element or atoms_type", default='atoms_element', type=str)
-    parser.add_argument("-sv", "--strip_value", required=False, help="Value to strip, e.g. if strip_freature= atoms_element; 1 for H. ", default=1, type=int)
-    parser.add_argument("-PL", "--Pres_Lat", required=False, help="If set to True this will create a new feature that combines one entry for each protein AA but all ligand entries; e.g. for only ca set strip_feature = atoms_type and strip_value = 14", default=False, type=bool)
-    parser.add_argument("-P", "--Pocket", required=False, help="We strip the complex by given distance (in Angstrom) from COG of molecule, use e.g. 15.0. If default value is given (0.0) no pocket stripping will be applied. ", default=0.0, type=float)
-    parser.add_argument("-A", "--Adaptability", required=False, help="We calculate the adaptability for each atom. Default behaviour will also strip H atoms, if no stripping should be perfomed set strip_value to -1.", default=False, type=bool)
-    parser.add_argument("-b", "--begin", required=False, help="Start index of structures", default=0, type=int)
-    parser.add_argument("-e", "--end", required=False, help="End index of structures", default=9999999, type=int)
-    args = parser.parse_args()
-
+def main(args):
     h5_properties = ['trajectory_coordinates', 'atoms_type', 'atoms_number','atoms_residue','atoms_element','molecules_begin_atom_index','frames_rmsd_ligand','frames_distance','frames_interaction_energy','frames_bSASA']
     strip_properties = ["atoms_type", "atoms_number", "atoms_residue", "atoms_element", "trajectory_coordinates","molecules_begin_atom_index"]
     elementMap = get_maps()
@@ -263,4 +250,17 @@ if __name__=="__main__":
             write_h5_info(args.datasetOut, struct, preprocessing_entries, h5_entries)
 
 
+if __name__=="__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-i", "--datasetIn", required=False, help="MISATO dataset path to read from in hdf5 format.", default='MD_dataset_mapped.hdf5', type=str)
+    parser.add_argument("-O", "--datasetOut", required=False, help="Output dataset in hdf5 format.", default='MD_dataset_mapped_stripped.hdf5', type=str)
+    parser.add_argument("-sf", "--strip_feature", required=False, help="Feature that should be stripped, e.g. atoms_element or atoms_type", default='atoms_element', type=str)
+    parser.add_argument("-sv", "--strip_value", required=False, help="Value to strip, e.g. if strip_freature= atoms_element; 1 for H. ", default=1, type=int)
+    parser.add_argument("-PL", "--Pres_Lat", required=False, help="If set to True this will create a new feature that combines one entry for each protein AA but all ligand entries; e.g. for only ca set strip_feature = atoms_type and strip_value = 14", default=False, type=bool)
+    parser.add_argument("-P", "--Pocket", required=False, help="We strip the complex by given distance (in Angstrom) from COG of molecule, use e.g. 15.0. If default value is given (0.0) no pocket stripping will be applied. ", default=0.0, type=float)
+    parser.add_argument("-A", "--Adaptability", required=False, help="We calculate the adaptability for each atom. Default behaviour will also strip H atoms, if no stripping should be perfomed set strip_value to -1.", default=False, type=bool)
+    parser.add_argument("-b", "--begin", required=False, help="Start index of structures", default=0, type=int)
+    parser.add_argument("-e", "--end", required=False, help="End index of structures", default=9999999, type=int)
+    args = parser.parse_args()
 
+    main(args)
