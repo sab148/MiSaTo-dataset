@@ -96,21 +96,26 @@ conda activate misato
 
 
 ```
-In order to install pytorch geometric we recommend to use pip for installation and to follow these instructions:
+
+In order to install pytorch geometric we recommend to use pip for installation and to follow the official installation instructions:
 https://pytorch-geometric.readthedocs.io/en/latest/install/installation.html
 
-Depending on you cuda environment the instructions vary, we show an example for cpu version.
+Depending on you cuda version the instructions vary. We show an example for the cpu version.
 
-```
+```bash
 conda create --name misato python=3
-conda install pip
-conda install -c conda-forge ambertools=22
+conda activate misato
+conda install -c anaconda h5py
+conda install -c conda-forge nglview
 pip install torch --extra-index-url https://download.pytorch.org/whl/cpu
 pip install pyg_lib torch_scatter torch_sparse torch_cluster torch_spline_conv torch_geometric -f https://data.pyg.org/whl/torch-1.13.0+cpu.html
-
-
 ```
 
+To run inference for MD you have to install ambertools. We recommend to install it in a separate conda environment 
+
+```bash
+conda install -c conda-forge ambertools
+```
 
 You can now go to src/getting_started.ipynb and discover with the MiSaTo dataset.
 
