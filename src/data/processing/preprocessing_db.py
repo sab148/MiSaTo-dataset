@@ -13,8 +13,12 @@ import os
 import sys
 
 
-def get_maps():
-    elementMap = pickle.load(open('data/processing/Maps/atoms_type_map_generate.pickle', 'rb'))
+def get_maps(current_dir):
+    """
+    Loading the mapping of amber AT to index.
+    """
+    elementMap = pickle.load(open(current_dir+'/Maps/atoms_type_map_generate.pickle', 'rb'))
+    print("elementMap", elementMap)
     return elementMap
 
 def get_entries(struct, f, h5_properties):
@@ -207,12 +211,13 @@ def adaptability(h5_entries):
     return np.mean(dist_to_ref_mat, axis=1), np.std(dist_to_ref_mat, axis=1), ref 
 
 def main(args):
+    print('args', args)
     h5_properties = ['trajectory_coordinates', 'atoms_type', 'atoms_number','atoms_residue','atoms_element','molecules_begin_atom_index','frames_rmsd_ligand','frames_distance','frames_interaction_energy','frames_bSASA']
     strip_properties = ["atoms_type", "atoms_number", "atoms_residue", "atoms_element", "trajectory_coordinates","molecules_begin_atom_index"]
-    elementMap = get_maps()
-    
+    current_dir = os.path.dirname(os.path.realpath(__file__))
+    elementMap = get_maps(current_dir)
     f = h5py.File(args.datasetIn, 'r')
-    structs = pickle.load(open('data/processing/available_structs.pickle', 'rb'))
+    structs = pickle.load(open(current_dir+'/available_structs.pickle', 'rb'))
     count = 0
     for struct in structs[args.begin:args.end]:
         count += 1
