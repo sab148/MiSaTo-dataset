@@ -136,11 +136,11 @@ class MolDataset(Dataset):
         scores = torch.cat([elec_aff.view(1), hardness.view(1)])
         
         if self.isTrain:
-            aff_std = torch.tensor(self.target_norm["train"]["Electron_Affinity"]["std"][()])
-            h_std = torch.tensor(self.target_norm["train"]["Hardness"]["std"][()])
+            aff_std = torch.tensor(self.target_norm["Electron_Affinity"]["std"][()])
+            h_std = torch.tensor(self.target_norm["Hardness"]["std"][()])
 
-            aff_mean = torch.tensor(self.target_norm["train"]["Electron_Affinity"]["mean"][()])
-            h_mean = torch.tensor(self.target_norm["train"]["Hardness"]["mean"][()])
+            aff_mean = torch.tensor(self.target_norm["Electron_Affinity"]["mean"][()])
+            h_mean = torch.tensor(self.target_norm["Hardness"]["mean"][()])
 
             all_mean = torch.cat([aff_mean.view(1), h_mean.view(1)])
             all_std = torch.cat([aff_std.view(1), h_std.view(1)])
