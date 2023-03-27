@@ -140,12 +140,13 @@ dmypy.json
 .idea/
 
 # Data & Models
-*.h5
+
 *.tar
 *.tar.gz
 
 # Lightning-Hydra-Template
 configs/local/default.yaml
-/data/
 /logs/
 .env
+
+sc_venv_template/
