@@ -120,6 +120,14 @@ def setup(args):
     return pdbName    
 
 
+def main(args): 
+    pdbName = setup(args)
+    content = read_sdf_file(pdbName)
+    values, atom_types = process_content(content)
+    print('values, atom types',values, atom_types)
+    print(np.shape(values))
+    write_h5_info(pdbName, atom_types, values)
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     #parser.add_argument("-dataset", "--dataset", required=False, help="Dataset in hdf5 format", default='MD_dataset_mapped.hdf5', type=str)
