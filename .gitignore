@@ -140,7 +140,7 @@ dmypy.json
 .idea/
 
 # Data & Models
-*.h5
+
 *.tar
 *.tar.gz
 
@@ -149,3 +149,5 @@ configs/local/default.yaml
 /data/
 /logs/
 .env
+
+sc_venv_template/
