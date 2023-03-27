@@ -14,7 +14,7 @@ import sys
 
 
 def get_maps():
-    elementMap = pickle.load(open('Maps/map_atomType_element_numbers.pickle', 'rb'))
+    elementMap = pickle.load(open('data/processing/Maps/atoms_type_map_generate.pickle', 'rb'))
     return elementMap
 
 def get_entries(struct, f, h5_properties):
@@ -23,7 +23,7 @@ def get_entries(struct, f, h5_properties):
         h5_entries[h5_property] = f.get(struct+'/'+h5_property)
     return h5_entries
 
-def get_strip_indices(h5_entries, strip_value, strip_feature):
+def get_strip_indices(args, h5_entries, strip_value, strip_feature):
     """
     We generate the indices for stripping for different cases. We also have to adjust the molecule_begin_atom_index.
     We strip the strip_values from the rest of the values. 
@@ -92,13 +92,13 @@ def get_inverse_strip_indices(h5_entries, strip_value, strip_feature):
 
     return stripped_indices, stripped_molecules_begin_atom_index
 
-def strip_feature(strip_properties, h5_entries, strip_value, strip_feature, inversion=False):
+def strip_feature(args, strip_properties, h5_entries, strip_value, strip_feature, inversion=False):
     """
     The different properties are stripped according to the calculated indices.
     """
     stripped_entries = {}
     if not inversion:
-        stripped_indices,  stripped_molecules_begin_atom_index = get_strip_indices(h5_entries, strip_value, strip_feature)
+        stripped_indices,  stripped_molecules_begin_atom_index = get_strip_indices(args, h5_entries, strip_value, strip_feature)
     if inversion:
         stripped_indices,  stripped_molecules_begin_atom_index = get_inverse_strip_indices(h5_entries, strip_value, strip_feature)
     for strip_property in strip_properties:
@@ -212,7 +212,7 @@ def main(args):
     elementMap = get_maps()
     
     f = h5py.File(args.datasetIn, 'r')
-    structs = pickle.load(open('available_structs.pickle', 'rb'))
+    structs = pickle.load(open('data/processing/available_structs.pickle', 'rb'))
     count = 0
     for struct in structs[args.begin:args.end]:
         count += 1
@@ -224,7 +224,7 @@ def main(args):
             if args.Pres_Lat:
                 if count ==1:
                     print('Stripping all but ', args.strip_feature, args.strip_value, ' and adding feature atoms_Pres_Lat')
-                preprocessing_entries = strip_feature(strip_properties, h5_entries, args.strip_value, args.strip_feature, inversion = True)
+                preprocessing_entries = strip_feature(args, strip_properties, h5_entries, args.strip_value, args.strip_feature, inversion = True)
                 preprocessing_entries['atoms_Pres_Lat'] = convert_to_Pres_Lat(preprocessing_entries, elementMap, args.strip_value, args.strip_feature)
                 preprocessing_done = True
 
@@ -233,13 +233,13 @@ def main(args):
                     print('Stripping the protein pocket with cutoff', args.Pocket)
                 args.strip_feature = 'pocket'
                 args.strip_value = args.Pocket
-                preprocessing_entries = strip_feature(strip_properties, h5_entries, args.strip_value, args.strip_feature) 
+                preprocessing_entries = strip_feature(args, strip_properties, h5_entries, args.strip_value, args.strip_feature) 
                 preprocessing_done = True
 
             if args.Adaptability:
                 if count ==1:
                     print('Stripping ', args.strip_feature, args.strip_value, ' and calculating adaptability for the atoms that were not stripped.')                
-                preprocessing_entries = strip_feature(strip_properties, h5_entries, args.strip_value, args.strip_feature)
+                preprocessing_entries = strip_feature(args, strip_properties, h5_entries, args.strip_value, args.strip_feature)
                 preprocessing_entries["feature_atoms_adaptability"], preprocessing_entries["feature_atoms_adaptability"], preprocessing_entries["atoms_coordinates_ref"] = adaptability(preprocessing_entries)
                 preprocessing_done = True
 
