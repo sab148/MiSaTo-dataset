@@ -48,13 +48,22 @@ def get_residues_atomwise(residues):
             atomwise.append(name)
     return atomwise
 
+def get_begin_atom_index(traj):
+    natoms = [m.n_atoms for m in traj.top.mols]
+    molecule_begin_atom_index = [0] 
+    x = 0
+    for i in range(len(natoms)-1):
+        x += natoms[i]
+        molecule_begin_atom_index.append(x)
+    return molecule_begin_atom_index
+
 def get_traj_info(traj, mapPath):
     coordinates  = traj.xyz
     residueMap, nameMap, typeMap, elementMap = get_maps(mapPath)
     types = [typeMap[a.type] for a in traj.top.atoms]
     elements = [elementMap[typ] for typ in types]
     atomic_numbers = [a.atomic_number for a in traj.top.atoms]
-    molecule_begin_atom_index = [m.begin_atom for m in traj.top.mols]
+    molecule_begin_atom_index = get_begin_atom_index(traj)
     residues = [(residueMap[res.name], res.n_atoms) for res in traj.top.residues]
     residues_atomwise = get_residues_atomwise(residues)
     return coordinates[0], elements, types, atomic_numbers, residues_atomwise, molecule_begin_atom_index
@@ -98,7 +107,10 @@ if __name__ == "__main__":
     
     pdbName = setup(args)
     traj = convert_to_amber_format(pdbName)
+    print('traj', traj)
     atoms_coordinates_ref, atoms_element, atoms_type, atoms_number, atoms_residue, molecules_begin_atom_index = get_traj_info(traj[args.mask], args.mapPath)
+
+
     write_h5_info(pdbName, atoms_type, atoms_number, atoms_residue, atoms_element, molecules_begin_atom_index, atoms_coordinates_ref)
     os.system('rm leap.log')
 
