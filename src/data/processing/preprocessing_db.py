@@ -18,7 +18,6 @@ def get_maps(current_dir):
     Loading the mapping of amber AT to index.
     """
     elementMap = pickle.load(open(current_dir+'/Maps/atoms_type_map_generate.pickle', 'rb'))
-    print("elementMap", elementMap)
     return elementMap
 
 def get_entries(struct, f, h5_properties):
@@ -211,10 +210,12 @@ def adaptability(h5_entries):
     return np.mean(dist_to_ref_mat, axis=1), np.std(dist_to_ref_mat, axis=1), ref 
 
 def main(args):
-    print('args', args)
     h5_properties = ['trajectory_coordinates', 'atoms_type', 'atoms_number','atoms_residue','atoms_element','molecules_begin_atom_index','frames_rmsd_ligand','frames_distance','frames_interaction_energy','frames_bSASA']
     strip_properties = ["atoms_type", "atoms_number", "atoms_residue", "atoms_element", "trajectory_coordinates","molecules_begin_atom_index"]
     current_dir = os.path.dirname(os.path.realpath(__file__))
+    if os.path.isfile(args.datasetOut):
+        print('Removing existing output file...')
+        os.remove(args.datasetOut)
     elementMap = get_maps(current_dir)
     f = h5py.File(args.datasetIn, 'r')
     structs = pickle.load(open(current_dir+'/available_structs.pickle', 'rb'))
@@ -223,7 +224,6 @@ def main(args):
         count += 1
         print(struct, count)
         h5_entries = get_entries(struct, f, h5_properties)
-        print(h5_entries)
         if not h5_entries["atoms_type"] == None: 
             preprocessing_done = False
             if args.Pres_Lat:
@@ -259,7 +259,7 @@ def main(args):
 if __name__=="__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-i", "--datasetIn", required=False, help="MISATO dataset path to read from in hdf5 format.", default='MD_dataset_mapped.hdf5', type=str)
-    parser.add_argument("-O", "--datasetOut", required=False, help="Output dataset in hdf5 format.", default='MD_dataset_mapped_stripped.hdf5', type=str)
+    parser.add_argument("-O", "--datasetOut", required=False, help="Output dataset in hdf5 format. Will be overwritten if it already exists.", default='MD_dataset_mapped_stripped.hdf5', type=str)
     parser.add_argument("-sf", "--strip_feature", required=False, help="Feature that should be stripped, e.g. atoms_element or atoms_type", default='atoms_element', type=str)
     parser.add_argument("-sv", "--strip_value", required=False, help="Value to strip, e.g. if strip_freature= atoms_element; 1 for H. ", default=1, type=int)
     parser.add_argument("-PL", "--Pres_Lat", required=False, help="If set to True this will create a new feature that combines one entry for each protein AA but all ligand entries; e.g. for only ca set strip_feature = atoms_type and strip_value = 14", default=False, type=bool)
