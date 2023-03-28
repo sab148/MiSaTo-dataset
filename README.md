@@ -60,7 +60,7 @@ _Suggestions are always welcome!_
 │   │
 │   │
 │   └── getting_started.ipynb     <- Jupyter notebook : how to load h5 files, load dataset, datamodules and iterate over the data
-│   
+│   └── inference.ipynb           <- Jupyter notebook : how to run inference
 │
 ├── .gitignore                <- List of files ignored by git
 ├── requirements.txt          <- File for installing python dependencies
@@ -71,11 +71,57 @@ _Suggestions are always welcome!_
 
 ## 🚀  Quickstart
 
+We recommend to pull our misato image from DockerHub or to create your own image (see docker/).  The images use cuda version 11.8. We recommend to install on your own system a version of CUDA that is a least 11.8 to ensure that the drivers work correctly.
+
 ```bash
 # clone project
 git clone https://github.com/sab148/MiSaTo-dataset.git
 cd MiSaTo-dataset
+```
+For singularity use:
+```bash
+# clone project
+singularity pull ...
+singularity shell misato.sif
+```
 
+For docker use: 
+
+```bash
+docker pull ...
+docker ...
+```
+
+
+## Installation using your own conda environment
+
+In case you want to use conda for your own installation please create a new misato environment.
+
+In order to install pytorch geometric we recommend to use pip (within conda) for installation and to follow the official installation instructions:[pytorch-geometric/install](
+https://pytorch-geometric.readthedocs.io/en/latest/install/installation.html)
+
+Depending on you CUDA version the instructions vary. We show an example for the cpu version.
+
+```bash
+conda create --name misato python=3
+conda activate misato
+conda install -c anaconda h5py pandas ipykernel ipywidgets==7.7.2
+conda install -c conda-forge nglview pytorch-lightning==1.8.3
+pip install torch --extra-index-url https://download.pytorch.org/whl/cpu
+pip install pyg_lib torch_scatter torch_sparse torch_cluster torch_spline_conv torch_geometric -f https://data.pyg.org/whl/torch-1.13.0+cpu.html
+```
+
+To run inference for MD you have to install ambertools. We recommend to install it in a separate conda environment.
+
+```bash
+conda create --name ambertools
+conda activate ambertools
+conda install -c conda-forge ambertools
+```
+
+
+
+```bash
 # [OPTIONAL] create virtual environment
 python3 -m venv misato_env/
 
@@ -96,29 +142,6 @@ conda activate misato
 
 
 ```
-
-In order to install pytorch geometric we recommend to use pip for installation and to follow the official installation instructions:
-https://pytorch-geometric.readthedocs.io/en/latest/install/installation.html
-
-Depending on you cuda version the instructions vary. We show an example for the cpu version.
-
-```bash
-conda create --name misato python=3
-conda activate misato
-conda install -c anaconda h5py
-conda install -c conda-forge nglview
-pip install torch --extra-index-url https://download.pytorch.org/whl/cpu
-pip install pyg_lib torch_scatter torch_sparse torch_cluster torch_spline_conv torch_geometric -f https://data.pyg.org/whl/torch-1.13.0+cpu.html
-```
-
-To run inference for MD you have to install ambertools. We recommend to install it in a separate conda environment.
-
-```bash
-conda install -c conda-forge ambertools
-```
-
-
-
 ## Singularity
 
 
