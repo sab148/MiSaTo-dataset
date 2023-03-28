@@ -3,7 +3,7 @@
 We recommend to pull our misato image from Dockerhub. 
 
 ## Create your own image
-You can create a docker image using the given Dockerfile. Before you build the image please download ambertools from https://ambermd.org/GetAmber.php#ambertools and place the tar.gz file into this folder.
+You can create a docker image using the given Dockerfile. Before you build the image please download ambertools from https://ambermd.org/GetAmber.php#ambertools and place the tar.bz2 file into this folder. In case you don't use AmberTools22 please change the Dockerfile accordingly.
 
 
 ```
