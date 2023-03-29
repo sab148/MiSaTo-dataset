@@ -69,7 +69,7 @@ def get_traj_info(traj, mapPath):
     return coordinates[0], elements, types, atomic_numbers, residues_atomwise, molecule_begin_atom_index
 
 def write_h5_info(struct, atoms_type, atoms_number, atoms_residue, atoms_element, molecules_begin_atom_index, atoms_coordinates_ref):
-    with h5py.File('inference_from_pdb.hdf5', 'a') as oF:
+    with h5py.File('inference_for_MD.hdf5', 'w') as oF:
         subgroup = oF.create_group(struct)     
         subgroup.create_dataset('atoms_residue', data= atoms_residue, compression = "gzip", dtype='i8')
         subgroup.create_dataset('molecules_begin_atom_index', data= molecules_begin_atom_index, compression = "gzip", dtype='i8')
@@ -95,6 +95,15 @@ def setup(args):
             os.mkdir(pdbName)
     return pdbName    
 
+def main(args):
+    pdbName = setup(args)
+    traj = convert_to_amber_format(pdbName)
+    print('traj', traj)
+    atoms_coordinates_ref, atoms_element, atoms_type, atoms_number, atoms_residue, molecules_begin_atom_index = get_traj_info(traj[args.mask], args.mapPath)
+    write_h5_info(pdbName, atoms_type, atoms_number, atoms_residue, atoms_element, molecules_begin_atom_index, atoms_coordinates_ref)
+    os.system('rm leap.log')
+
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -104,15 +113,8 @@ if __name__ == "__main__":
     parser.add_argument("-mapPath", "--mapPath", required=False, help="Path to the maps for generating the h5 files", default= 'Maps/', type=str)
     parser.add_argument("-mask", "--mask", required=False, help="Mask that is applied on Trajectory, e.g. '!@H=' for no hydrogens, '@CA' for only ca atoms; see https://amberhub.chpc.utah.edu/atom-mask-selection-syntax/ for more info", default= '', type=str)    
     args = parser.parse_args()
-    
-    pdbName = setup(args)
-    traj = convert_to_amber_format(pdbName)
-    print('traj', traj)
-    atoms_coordinates_ref, atoms_element, atoms_type, atoms_number, atoms_residue, molecules_begin_atom_index = get_traj_info(traj[args.mask], args.mapPath)
+    main(args)
 
-
-    write_h5_info(pdbName, atoms_type, atoms_number, atoms_residue, atoms_element, molecules_begin_atom_index, atoms_coordinates_ref)
-    os.system('rm leap.log')
 
 
 
