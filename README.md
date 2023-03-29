@@ -38,6 +38,31 @@ You can freely download the **FULL MISATO dataset** from Zenodo using the links 
 - Load the PyTorch Dataloaders of each dataset.
 - Load the PyTorch lightning Datamodules of each dataset.
 
+
+
+## 🚀  Quickstart
+
+We recommend to pull our MISATO image from DockerHub or to create your own image (see [docker/](docker/)).  The images use cuda version 11.8. We recommend to install on your own system a version of CUDA that is a least 11.8 to ensure that the drivers work correctly.
+
+```bash
+# clone project
+git clone https://github.com/sab148/MiSaTo-dataset.git
+cd MiSaTo-dataset
+```
+For singularity use:
+```bash
+# clone project
+singularity pull ...
+singularity shell misato.sif
+```
+
+For docker use: 
+
+```bash
+docker pull ...
+docker ...
+```
+
 <br>
 
 ## Required packages:
@@ -71,31 +96,6 @@ You can freely download the **FULL MISATO dataset** from Zenodo using the links 
 ```
 
 <br>
-
-## 🚀  Quickstart
-
-We recommend to pull our MISATO image from DockerHub or to create your own image (see [docker/](docker/)).  The images use cuda version 11.8. We recommend to install on your own system a version of CUDA that is a least 11.8 to ensure that the drivers work correctly.
-
-```bash
-# clone project
-git clone https://github.com/sab148/MiSaTo-dataset.git
-cd MiSaTo-dataset
-```
-For singularity use:
-```bash
-# clone project
-singularity pull ...
-singularity shell misato.sif
-```
-
-For docker use: 
-
-```bash
-docker pull ...
-docker ...
-```
-
-
 ## Installation using your own conda environment
 
 In case you want to use conda for your own installation please create a new misato environment.
