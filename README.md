@@ -6,9 +6,11 @@
 [![pytorch](https://img.shields.io/badge/PyTorch_1.10+-ee4c2c?logo=pytorch&logoColor=white)](https://pytorch.org/get-started/locally/)
 [![lightning](https://img.shields.io/badge/-Lightning_1.8+-792ee5?logo=pytorchlightning&logoColor=white)](https://pytorchlightning.ai/)
 
+</div>
+ 
 
-**Code base for QM and MD dataset**
 
+Code base for QM and MD dataset
 - Quantum Mechanics: 19443 ligands, curated and refined
 - Molecular Dynamics: 16972 protein-ligand structures, 10 ns 
 - AI: pytorch dataloaders, base line models for MD and QM
