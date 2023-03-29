@@ -96,6 +96,8 @@ docker ...
 ```
 
 <br>
+
+
 ## Installation using your own conda environment
 
 In case you want to use conda for your own installation please create a new misato environment.
