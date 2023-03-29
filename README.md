@@ -78,7 +78,7 @@ _Suggestions are always welcome!_
 
 ## 🚀  Quickstart
 
-We recommend to pull our misato image from DockerHub or to create your own image (see docker/).  The images use cuda version 11.8. We recommend to install on your own system a version of CUDA that is a least 11.8 to ensure that the drivers work correctly.
+We recommend to pull our misato image from DockerHub or to create your own image (see [docker/](docker/)).  The images use cuda version 11.8. We recommend to install on your own system a version of CUDA that is a least 11.8 to ensure that the drivers work correctly.
 
 ```bash
 # clone project
