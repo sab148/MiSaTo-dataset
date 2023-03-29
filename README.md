@@ -14,7 +14,7 @@ We present a novel dataset of 16972 protein-ligand structures along with 19443 l
  
 <br>
 
-
+![Alt text](logo.jpg?raw=true "MISATO")
 
 ## :purple_heart: Community
 
