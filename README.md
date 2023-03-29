@@ -20,8 +20,9 @@ More details in the paper.
 
 ## :purple_heart: Community
 
+Want to get hands-on for drug discovery?
 [Join our discord server!](https://discord.gg/tGaut92VYB)
-Lets crack the **100 ns** MD, **30000 structures** and a whole new world of **AI models** together.
+Lets crack the **100 ns** MD, **30000 structures** and a whole new world of **AI models for drug discovery** together.
 
 
 ## 📌  Introduction 
