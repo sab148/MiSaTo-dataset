@@ -18,7 +18,7 @@
 ## :purple_heart: Community
 
 [Join our discord server!](https://discord.gg/tGaut92VYB)
-Lets crack the **100 ns** MD, **30000 structures** and whole new world of **AI models** together.
+Lets crack the **100 ns** MD, **30000 structures** and a whole new world of **AI models** together.
 
 ## 📌  Introduction 
  
