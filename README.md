@@ -8,7 +8,7 @@
 
 </div>
  
-Where we are:
+## :earth_americas: Where we are:
 - Quantum Mechanics: 19443 ligands, curated and refined
 - Molecular Dynamics: 16972 simulated protein-ligand structures, 10 ns each 
 - AI: pytorch dataloaders, 2 base line models for MD and QM
