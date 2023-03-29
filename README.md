@@ -56,7 +56,7 @@ wget ...
 
 **Start with the notebook [src/getting_started.ipynb](src/getting_started.ipynb) to :**
 
-- Understand the structures of our dataset and read each molecule's properties.
+- Understand the structure of our dataset and how to access each molecule's properties.
 - Load the PyTorch Dataloaders of each dataset.
 - Load the PyTorch lightning Datamodules of each dataset.
 
