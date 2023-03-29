@@ -19,7 +19,7 @@ We present a novel dataset of 16972 protein-ligand structures along with 19443 l
 ## :purple_heart: Community
 
 [Join our discord server](https://discord.gg/tGaut92VYB)
-Lets crack the 100 ns MD and 30000 structures together!
+Lets crack the **100 ns** MD, **30000 structures** and whole new world of AI models together!
 
 ## 📌  Introduction 
  
