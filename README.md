@@ -7,23 +7,22 @@
 [![lightning](https://img.shields.io/badge/-Lightning_1.8+-792ee5?logo=pytorchlightning&logoColor=white)](https://pytorchlightning.ai/)
 
 
-Code base for QM and MD dataset <br>
+**Code base for QM and MD dataset**
 
-We present a novel dataset of 16972 protein-ligand structures along with 19443 ligand structures originating from the pdbBind library. We used semi-empirical quantum mechanics to curate every ligand. The refined ligands were extensively simulated in the respective protein pockets in explicit water molecular dynamics simulations. You can use the dataset directly from h5 or via simple PyTorch/pytorch-lightning data loaders. Structures are enriched with a diverse set of semi-empirical and MD derived properties. With our novel and highly curated dataset, we ought to facilitate the generation of future AI models, bridging the gap between in silico and in vivo drug discovery.
-</div>
- 
-<br>
+- Quantum Mechanics: 19443 ligands, curated and refined
+- Molecular Dynamics: 16972 protein-ligand structures, 10 ns 
+- AI: pytorch dataloaders, base line models for MD and QM
 
 ![Alt text](logo.jpg?raw=true "MISATO")
 
 ## :purple_heart: Community
 
-[Join our discord server](https://discord.gg/tGaut92VYB)
-Lets crack the **100 ns** MD, **30000 structures** and whole new world of AI models together!
+[Join our discord server!](https://discord.gg/tGaut92VYB)
+Lets crack the **100 ns** MD, **30000 structures** and whole new world of **AI models** together.
 
 ## 📌  Introduction 
  
-In this repository, we show how to load QM and MD dataset (h5 file). You can access the properties of different structures and use them in Pytorch based dataloaders. We provide a small sample of our dataset along with the repo.
+In this repository, we show how to load QM (Quantum Mechanics) and MD (Molecular Dynamics) dataset (h5 file). You can access the properties of different structures and use them in Pytorch based dataloaders. We provide a small sample of our dataset along with the repo.
 
 You can download the FULL dataset from Zenodo using links below:
 
