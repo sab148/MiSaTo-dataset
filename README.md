@@ -14,6 +14,13 @@ We present a novel dataset of 16972 protein-ligand structures along with 19443 l
  
 <br>
 
+
+
+## :purple_heart: Community
+
+[Join our discord server](https://discord.gg/tGaut92VYB)
+Lets crack the 100 ns MD and 30000 structures together!
+
 ## 📌  Introduction 
  
 In this repository, we show how to load QM and MD dataset (h5 file). You can access the properties of different structures and use them in Pytorch based dataloaders. We provide a small sample of our dataset along with the repo.
