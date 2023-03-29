@@ -9,8 +9,6 @@
 </div>
  
 
-
-Code base for QM and MD dataset
 - Quantum Mechanics: 19443 ligands, curated and refined
 - Molecular Dynamics: 16972 protein-ligand structures, 10 ns 
 - AI: pytorch dataloaders, base line models for MD and QM
