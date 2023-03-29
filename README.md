@@ -8,7 +8,7 @@
 
 </div>
  
-Current state:
+Where we are:
 - Quantum Mechanics: 19443 ligands, curated and refined
 - Molecular Dynamics: 16972 simulated protein-ligand structures, 10 ns each 
 - AI: pytorch dataloaders, 2 base line models for MD and QM
@@ -29,7 +29,7 @@ Want to get hands-on for drug discovery using AI?
 We are the first drug discovery community project :hugs:
 
 
-Lets crack the **100+ ns** MD, **30000+ structures** and a whole new world of **AI models for drug discovery** together.
+Lets crack the **100+ ns** MD, **30000+ protein-ligand structures** and a whole new world of **AI models for drug discovery** together.
 
 
 ## 📌  Introduction 
