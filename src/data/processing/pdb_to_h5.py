@@ -68,8 +68,8 @@ def get_traj_info(traj, mapPath):
     residues_atomwise = get_residues_atomwise(residues)
     return coordinates[0], elements, types, atomic_numbers, residues_atomwise, molecule_begin_atom_index
 
-def write_h5_info(struct, atoms_type, atoms_number, atoms_residue, atoms_element, molecules_begin_atom_index, atoms_coordinates_ref):
-    with h5py.File('inference_for_MD.hdf5', 'w') as oF:
+def write_h5_info(outName, struct, atoms_type, atoms_number, atoms_residue, atoms_element, molecules_begin_atom_index, atoms_coordinates_ref):
+    with h5py.File(outName, 'w') as oF:
         subgroup = oF.create_group(struct)     
         subgroup.create_dataset('atoms_residue', data= atoms_residue, compression = "gzip", dtype='i8')
         subgroup.create_dataset('molecules_begin_atom_index', data= molecules_begin_atom_index, compression = "gzip", dtype='i8')
@@ -77,8 +77,6 @@ def write_h5_info(struct, atoms_type, atoms_number, atoms_residue, atoms_element
         subgroup.create_dataset('atoms_number', data= atoms_number, compression = "gzip", dtype='i8')  
         subgroup.create_dataset('atoms_element', data= atoms_element, compression = "gzip", dtype='i8')
         subgroup.create_dataset('atoms_coordinates_ref', data= atoms_coordinates_ref, compression = "gzip", dtype='f8')
-        subgroup.create_dataset('atoms_soft_hard', data= -np.ones(np.shape(atoms_type)), compression = "gzip", dtype='f8')
-        subgroup.create_dataset('atoms_soft_hard_std', data= -np.ones(np.shape(atoms_type)), compression = "gzip", dtype='f8')
 
 
 def setup(args):
@@ -98,16 +96,16 @@ def setup(args):
 def main(args):
     pdbName = setup(args)
     traj = convert_to_amber_format(pdbName)
-    print('traj', traj)
+    print('The following trajectory was created:', traj)
     atoms_coordinates_ref, atoms_element, atoms_type, atoms_number, atoms_residue, molecules_begin_atom_index = get_traj_info(traj[args.mask], args.mapPath)
-    write_h5_info(pdbName, atoms_type, atoms_number, atoms_residue, atoms_element, molecules_begin_atom_index, atoms_coordinates_ref)
+    write_h5_info(args.datasetOutName, pdbName, atoms_type, atoms_number, atoms_residue, atoms_element, molecules_begin_atom_index, atoms_coordinates_ref)
     os.system('rm leap.log')
-
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     #parser.add_argument("-dataset", "--dataset", required=False, help="Dataset in hdf5 format", default='MD_dataset_mapped.hdf5', type=str)
+    parser.add_argument("-O", "-datasetOutName", required=False, help="Name of dataset in hdf5 format that will be created", default='inference_for_md.hdf5', type=str)
     parser.add_argument("-pdbid", "--pdbid", required=False, help="ID that will be downloaded from the PDB", type=str)
     parser.add_argument("-fileName", "--fileName", required=False, help="Name of the pdb file, e.g. 1a4s.pdb", type=str)
     parser.add_argument("-mapPath", "--mapPath", required=False, help="Path to the maps for generating the h5 files", default= 'Maps/', type=str)
