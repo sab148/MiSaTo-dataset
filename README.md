@@ -10,7 +10,7 @@
  
 
 - Quantum Mechanics: 19443 ligands, curated and refined
-- Molecular Dynamics: 16972 protein-ligand structures, 10 ns 
+- Molecular Dynamics: 16972 simulated protein-ligand structures, 10 ns 
 - AI: pytorch dataloaders, base line models for MD and QM
 
 ![Alt text](logo.jpg?raw=true "MISATO")
@@ -22,9 +22,9 @@ Lets crack the **100 ns** MD, **30000 structures** and a whole new world of **AI
 
 ## 📌  Introduction 
  
-In this repository, we show how to use the Misato database. You can access the properties of different structures and use them in Pytorch based dataloaders. We provide a small sample of our dataset along with the repo.
+In this repository, we show how to use the Misato database. You can access the calculated properties of different protein-ligand structures and use them for training in Pytorch based dataloaders. We provide a small sample of our dataset along with the repo.
 
-You can freely download the **FULL Misato dataset** from Zenodo using the links below:
+You can freely download the **FULL MISATO dataset** from Zenodo using the links below:
 
 - MD (120GiB)
 - QM (5 GiB)
@@ -74,7 +74,7 @@ You can freely download the **FULL Misato dataset** from Zenodo using the links 
 
 ## 🚀  Quickstart
 
-We recommend to pull our misato image from DockerHub or to create your own image (see [docker/](docker/)).  The images use cuda version 11.8. We recommend to install on your own system a version of CUDA that is a least 11.8 to ensure that the drivers work correctly.
+We recommend to pull our MISATO image from DockerHub or to create your own image (see [docker/](docker/)).  The images use cuda version 11.8. We recommend to install on your own system a version of CUDA that is a least 11.8 to ensure that the drivers work correctly.
 
 ```bash
 # clone project
@@ -121,37 +121,6 @@ conda create --name ambertools
 conda activate ambertools
 conda install -c conda-forge ambertools
 ```
-
-
-
-```bash
-# [OPTIONAL] create virtual environment
-python3 -m venv misato_env/
-
-# activate the env
-source misato_env/bin/activate
-
-# install requirements
-pip install -r requirements.txt
-```
-Alternatively you can use anaconda to install the environment
-```bash
-
-# create conda env
-
-conda env create -f misato.yml
-# activate the env
-conda activate misato
-
-
-```
-## Singularity
-
-
-
-
-
-You can now go to src/getting_started.ipynb and discover with the MiSaTo dataset.
 
 ## ❤️  Contributions
 
