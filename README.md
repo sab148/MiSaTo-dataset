@@ -22,22 +22,19 @@ Lets crack the **100 ns** MD, **30000 structures** and a whole new world of **AI
 
 ## 📌  Introduction 
  
-In this repository, we show how to load QM (Quantum Mechanics) and MD (Molecular Dynamics) dataset (h5 file). You can access the properties of different structures and use them in Pytorch based dataloaders. We provide a small sample of our dataset along with the repo.
+In this repository, we show how to use the Misato database. You can access the properties of different structures and use them in Pytorch based dataloaders. We provide a small sample of our dataset along with the repo.
 
-You can download the FULL dataset from Zenodo using links below:
+You can freely download the **FULL Misato dataset** from Zenodo using the links below:
 
-- MD
-- QM
+- MD (120GiB)
+- QM (5 GiB)
+- electronic densities (10 GiB)
+- MD restart and topology files (60 GiB)
  
-_Suggestions are always welcome!_
 
+**Start with the notebook [src/getting_started.ipynb](src/getting_started.ipynb) to :**
 
-
-
-
-**You can use the notebook src/getting_started.ipynb to :**
-
-- Understand the structures of our H5 files and read each molecule's properties.
+- Understand the structures of our dataset and read each molecule's properties.
 - Load the PyTorch Dataloaders of each dataset.
 - Load the PyTorch lightning Datamodules of each dataset.
 
