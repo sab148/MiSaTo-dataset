@@ -1,4 +1,4 @@
-
+﻿
 ```bash
 # [OPTIONAL] create virtual environment
 python3 -m venv misato_env/
@@ -18,4 +18,11 @@ conda env create -f misato.yml
 # activate the env
 conda activate misato
 
+## ❤️  Contributions
+
+Have a question? Found a bug? Missing a specific feature? Feel free to file a new issue, discussion or PR with respective title and description.
+
+Suggestions for improvements are always welcome!
+
+<br>
 

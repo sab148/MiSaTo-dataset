@@ -8,10 +8,10 @@
 
 </div>
  
-
+Current state:
 - Quantum Mechanics: 19443 ligands, curated and refined
-- Molecular Dynamics: 16972 simulated protein-ligand structures, 10 ns 
-- AI: pytorch dataloaders, base line models for MD and QM
+- Molecular Dynamics: 16972 simulated protein-ligand structures, 10 ns each 
+- AI: pytorch dataloaders, 2 base line models for MD and QM
 
 
 More details in the paper.
@@ -20,9 +20,9 @@ More details in the paper.
 
 ## :purple_heart: Community
 
-Want to get hands-on for drug discovery?
+Want to get hands-on for drug discovery using AI?
 [Join our discord server!](https://discord.gg/tGaut92VYB)
-Lets crack the **100 ns** MD, **30000 structures** and a whole new world of **AI models for drug discovery** together.
+Lets crack the **100+ ns** MD, **30000+ structures** and a whole new world of **AI models for drug discovery** together.
 
 
 ## 📌  Introduction 
@@ -131,11 +131,5 @@ conda activate ambertools
 conda install -c conda-forge ambertools
 ```
 
-## ❤️  Contributions
 
-Have a question? Found a bug? Missing a specific feature? Feel free to file a new issue, discussion or PR with respective title and description.
-
-Suggestions for improvements are always welcome!
-
-<br>
 
