@@ -43,7 +43,7 @@ class ProtDataset(Dataset):
             
         column_names = ["x", "y", "z", "element"]
         atoms_protein = pd.DataFrame(columns = column_names)
-        
+        print(self.ids[index])
         pitem = self.f[self.ids[index]]
 
         cutoff = pitem["molecules_begin_atom_index"][:][-1]
@@ -54,7 +54,7 @@ class ProtDataset(Dataset):
 
         atoms_protein["element"] = pitem["atoms_element"][:][:cutoff]  
 
-        item["scores"] = pitem["atoms_soft_hard"][:][:cutoff]
+        item["scores"] = pitem["feature_atoms_adaptability"][:][:cutoff]
 
         item["atoms_protein"] = atoms_protein
 
