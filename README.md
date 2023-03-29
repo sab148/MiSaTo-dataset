@@ -34,7 +34,7 @@ Lets crack the **100+ ns** MD, **30000+ protein-ligand structures** and a whole 
 
 ## 📌  Introduction 
  
-In this repository, we show how to use the Misato database. You can access the calculated properties of different protein-ligand structures and use them for training in Pytorch based dataloaders. We provide a small sample of our dataset along with the repo.
+In this repository, we show how to download and apply the Misato database for AI models. You can access the calculated properties of different protein-ligand structures and use them for training in Pytorch based dataloaders. We provide a small sample of the dataset along with the repo.
 
 You can freely download the **FULL MISATO dataset** from Zenodo using the links below:
 
@@ -43,6 +43,10 @@ You can freely download the **FULL MISATO dataset** from Zenodo using the links 
 - electronic densities (10 GiB)
 - MD restart and topology files (60 GiB)
  
+
+```bash
+wget ...
+```
 
 **Start with the notebook [src/getting_started.ipynb](src/getting_started.ipynb) to :**
 
