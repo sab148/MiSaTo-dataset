@@ -75,7 +75,7 @@ def train(args, device, log_dir, local_rank, rep=None, test_mode=False):
     # logger = logging.getLogger('lba')
     # logger.basicConfig(filename=os.path.join(log_dir, f'train_{split}_cv{fold}.log'),level=logging.INFO)
 
-    isTrainval = False
+    isTrainval = True
     print("isTrain", isTrainval)
     train_dataset = MolDataset(args.qmh5_file, args.train_set, target_norm_file=args.norm_file, transform=GNNTransformQM(), isTrain=isTrainval, post_transform=T.RandomTranslate(0.25))
     val_dataset = MolDataset(args.qmh5_file, args.val_set, target_norm_file=args.norm_file, transform=GNNTransformQM(), post_transform=T.RandomTranslate(0.25))
@@ -204,7 +204,9 @@ if __name__=="__main__":
             print('seed:', seed)
             now = datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
             log_dir = os.path.join('logs', f'QM_{now}')
+            
             if utils.is_main_process():
+                print("log_dir", log_dir)
                 if not os.path.exists(log_dir):
                     os.makedirs(log_dir)
             np.random.seed(seed)

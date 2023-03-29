@@ -152,7 +152,8 @@ def train(args, device, log_dir, local_rank, rep=None, test_mode=False):
         val_file = os.path.join(log_dir, f'lba-rep{rep}.best.val.pt')
         test_file = os.path.join(log_dir, f'lba-rep{rep}.best.test.pt')
         cpt = torch.load(os.path.join(log_dir, f'best_weights_rep{rep}.pt'))
-        model_without_ddp.load_state_dict(cpt['model_state_dict'])
+        if utils.is_main_process():
+            model.load_state_dict(cpt['model_state_dict'])
         _, _, _, y_true_train, y_pred_train = test(model, train_loader, local_rank)
         if utils.is_main_process():
             torch.save({'targets':y_true_train, 'predictions':y_pred_train}, train_file)
@@ -177,7 +178,7 @@ if __name__=="__main__":
     parser.add_argument('--mode', type=str, default='test')
     parser.add_argument('--batch_size', type=int, default=16)
     parser.add_argument('--hidden_dim', type=int, default=64)
-    parser.add_argument('--num_epochs', type=int, default=2)
+    parser.add_argument('--num_epochs', type=int, default=100)
     parser.add_argument('--learning_rate', type=float, default=1e-4)
     parser.add_argument('--log_dir', type=str, default=None)
     parser.add_argument('--seqid', type=int, default=30)
@@ -217,6 +218,7 @@ if __name__=="__main__":
             print('seed:', seed)
             now = datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
             log_dir = os.path.join('logs', f'MD_{now}')
+            print("log_dir", log_dir)
             if utils.is_main_process():
                 if not os.path.exists(log_dir):
                     os.makedirs(log_dir)
