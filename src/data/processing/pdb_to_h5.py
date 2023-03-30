@@ -52,9 +52,10 @@ def get_begin_atom_index(traj):
     natoms = [m.n_atoms for m in traj.top.mols]
     molecule_begin_atom_index = [0] 
     x = 0
-    for i in range(len(natoms)-1):
+    for i in range(len(natoms)):
         x += natoms[i]
         molecule_begin_atom_index.append(x)
+    print('molecule begin atom index', molecule_begin_atom_index, natoms)
     return molecule_begin_atom_index
 
 def get_traj_info(traj, mapPath):
@@ -69,6 +70,8 @@ def get_traj_info(traj, mapPath):
     return coordinates[0], elements, types, atomic_numbers, residues_atomwise, molecule_begin_atom_index
 
 def write_h5_info(outName, struct, atoms_type, atoms_number, atoms_residue, atoms_element, molecules_begin_atom_index, atoms_coordinates_ref):
+    if os.path.isfile(outName):
+        os.remove(outName)
     with h5py.File(outName, 'w') as oF:
         subgroup = oF.create_group(struct)     
         subgroup.create_dataset('atoms_residue', data= atoms_residue, compression = "gzip", dtype='i8')
