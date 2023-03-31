@@ -13,7 +13,7 @@
 - Molecular Dynamics: 16972 simulated protein-ligand structures, 10 ns each 
 - AI: pytorch dataloaders, 2 base line models for MD and QM
 
-Our goals:
+Our vison:
 - highest possible accuracy for ligand molecules
 - represent the systems dynamics in reasonable timescales
 - innovative AI models for drug discovery predictions
@@ -44,10 +44,10 @@ In this repository, we show how to download and apply the Misato database for AI
 
 You can freely download the **FULL MISATO dataset** from Zenodo using the links below:
 
-- MD (120GiB)
-- QM (5 GiB)
-- electronic densities (10 GiB)
-- MD restart and topology files (60 GiB)
+- MD (133 GiB)
+- QM (0.3 GiB)
+- electronic densities (6 GiB)
+- MD restart and topology files (55 GiB)
  
 
 ```bash
