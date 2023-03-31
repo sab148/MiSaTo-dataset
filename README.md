@@ -13,7 +13,7 @@
 - Molecular Dynamics: 16972 simulated protein-ligand structures, 10 ns each 
 - AI: pytorch dataloaders, 2 base line models for MD and QM
 
-Our vison:
+## :electron: Vison:
 - highest possible accuracy for ligand molecules
 - represent the systems dynamics in reasonable timescales
 - innovative AI models for drug discovery predictions
