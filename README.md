@@ -13,8 +13,8 @@
 - Molecular Dynamics: 16972 simulated protein-ligand structures, 10 ns each 
 - AI: pytorch dataloaders, 2 base line models for MD and QM
 
-## :electron: Vison:
-We are the first drug discovery community project :hugs:
+## :electron: Vision:
+We are a drug discovery community project :hugs:
 - highest possible accuracy for ligand molecules
 - represent the systems dynamics in reasonable timescales
 - innovative AI models for drug discovery predictions
@@ -82,13 +82,6 @@ docker ...
 
 <br>
 
-## Required packages:
-
-- torch>=1.10.0
-- pytorch-lightning==1.8.3
-- torch-geometric==2.0.4
-
-<br>
 
 ## Project Structure
 
@@ -115,6 +108,13 @@ docker ...
 <br>
 <br>
 
+## Required packages:
+
+- torch>=XX
+- pytorch-lightning==1.8.3
+- torch-geometric==XX
+
+<br>
 
 
 ## Installation using your own conda environment
