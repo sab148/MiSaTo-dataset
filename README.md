@@ -20,7 +20,7 @@
 
 
 
-More details in the paper.
+Check out the paper!
 
 ![Alt text](logo.jpg?raw=true "MISATO")
 
