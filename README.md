@@ -14,11 +14,12 @@
 - AI: pytorch dataloaders, 2 base line models for MD and QM
 
 ## :electron: Vison:
+We are the first drug discovery community project :hugs:
 - highest possible accuracy for ligand molecules
 - represent the systems dynamics in reasonable timescales
 - innovative AI models for drug discovery predictions
 
-
+Lets crack the **100+ ns** MD, **30000+ protein-ligand structures** and a whole new world of **AI models for drug discovery** together.
 
 Check out the paper!
 
@@ -30,12 +31,6 @@ Want to get hands-on for drug discovery using AI?
 
 
 [Join our discord server!](https://discord.gg/tGaut92VYB)
-
-
-We are the first drug discovery community project :hugs:
-
-
-Lets crack the **100+ ns** MD, **30000+ protein-ligand structures** and a whole new world of **AI models for drug discovery** together.
 
 
 ## 📌  Introduction 
