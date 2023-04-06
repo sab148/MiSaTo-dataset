@@ -5,7 +5,7 @@ import os
 import time
 import datetime
 
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import numpy as np
 import torch
 import torch.nn.functional as F
@@ -15,10 +15,10 @@ from scipy.stats import spearmanr
 
 from MDmodel import GNN_MD
 import utils
-sys.path.insert(0, '/p/project/atmlaml/benassou1/misato/MiSaTo-dataset/src/data/components/')
+sys.path.insert(0,os.path.join(os.path.dirname(os.path.realpath(__file__)).split('MiSaTo-dataset')[0],'MiSaTo-dataset/src/data/components/'))
+
 from datasets import ProtDataset
 from transformMD import GNNTransformMD
-
 
 def train_loop(model, loader, optimizer, local_rank):
     model.train()
@@ -170,10 +170,10 @@ def train(args, device, log_dir, local_rank, rep=None, test_mode=False):
 
 if __name__=="__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--mdh5_file', type=str, default="/p/project/atmlaml/benassou1/misato/MiSaTo-dataset/data/MD/h5_files/MD_dataset_soft_hard_noH.hdf5")
-    parser.add_argument('--train_set', type=str, default="/p/project/atmlaml/benassou1/misato/MiSaTo-dataset/data/MD/splits/train_soft_hard.txt")
-    parser.add_argument('--val_set', type=str, default="/p/project/atmlaml/benassou1/misato/MiSaTo-dataset/data/MD/splits/val_soft_hard.txt")
-    parser.add_argument('--test_set', type=str, default="/p/project/atmlaml/benassou1/misato/MiSaTo-dataset/data/MD/splits/test_soft_hard.txt")
+    parser.add_argument('--mdh5_file', type=str, default="../data/MD/h5_files/MD_out.hdf5")
+    parser.add_argument('--train_set', type=str, default="../data/MD/splits/train_MD.txt")
+    parser.add_argument('--val_set', type=str, default="../data/MD/splits/val_MD.txt")
+    parser.add_argument('--test_set', type=str, default="../data/MD/splits/test_MD.txt")
     parser.add_argument( '--master_port', type=int, default=12354)
     parser.add_argument('--mode', type=str, default='test')
     parser.add_argument('--batch_size', type=int, default=16)

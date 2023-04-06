@@ -9,7 +9,7 @@ RUN sudo ln -snf /usr/share/zoneinfo/$TZ /etc/localtime
 # Install torch geometric
 RUN pip install pyg_lib torch_scatter torch_sparse torch_cluster torch_spline_conv -f https://data.pyg.org/whl/torch-2.0.0+cu118.html
 RUN pip install torch_geometric
-RUN pip install h5py ipykernel ipywidgets==7.7.2 jupyter nglview pandas
+RUN pip install h5py ipykernel==5.5.5 ipywidgets==7.6.3 jupyter nglview==2.7.7 pandas
 RUN pip install pytorch-lightning==1.8.3
 
 RUN apt-get update; \

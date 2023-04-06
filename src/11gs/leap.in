@@ -1,0 +1,7 @@
+
+    source leaprc.protein.ff14SB
+    source leaprc.water.tip3p
+    exp = loadpdb 11gs/4amb.pdb
+    saveamberparm exp 11gs/exp.top 11gs/exp.crd
+    quit
+    

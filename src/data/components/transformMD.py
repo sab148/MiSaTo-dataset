@@ -1,4 +1,4 @@
-from .transforms import prot_graph_transform
+from transforms import prot_graph_transform
         
 class GNNTransformMD(object):
     """

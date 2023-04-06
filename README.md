@@ -6,44 +6,82 @@
 [![pytorch](https://img.shields.io/badge/PyTorch_1.10+-ee4c2c?logo=pytorch&logoColor=white)](https://pytorch.org/get-started/locally/)
 [![lightning](https://img.shields.io/badge/-Lightning_1.8+-792ee5?logo=pytorchlightning&logoColor=white)](https://pytorchlightning.ai/)
 
-
-Code base for QM and MD dataset <br>
-
-We present a novel dataset of 16972 protein-ligand structures along with 19443 ligand structures originating from the pdbBind library. We used semi-empirical quantum mechanics to curate every ligand. The refined ligands were extensively simulated in the respective protein pockets in explicit water molecular dynamics simulations. You can use the dataset directly from h5 or via simple PyTorch/pytorch-lightning data loaders. Structures are enriched with a diverse set of semi-empirical and MD derived properties. With our novel and highly curated dataset, we ought to facilitate the generation of future AI models, bridging the gap between in silico and in vivo drug discovery.
 </div>
  
-<br>
+## :earth_americas: Where we are:
+- Quantum Mechanics: 19443 ligands, curated and refined
+- Molecular Dynamics: 16972 simulated protein-ligand structures, 10 ns each 
+- AI: pytorch dataloaders, 2 base line models for MD and QM
+
+## :electron: Vision:
+We are a drug discovery community project :hugs:
+- highest possible accuracy for ligand molecules
+- represent the systems dynamics in reasonable timescales
+- innovative AI models for drug discovery predictions
+
+Lets crack the **100+ ns** MD, **30000+ protein-ligand structures** and a whole new world of **AI models for drug discovery** together.
+
+Check out the paper!
+
+![Alt text](logo.jpg?raw=true "MISATO")
+
+## :purple_heart: Community
+
+Want to get hands-on for drug discovery using AI?
+
+
+[Join our discord server!](https://discord.gg/tGaut92VYB)
+
 
 ## 📌  Introduction 
  
-In this repository, we show how to load QM and MD dataset (h5 file). You can access the properties of different structures and use them in Pytorch based dataloaders. We provide a small sample of our dataset along with the repo.
+In this repository, we show how to download and apply the Misato database for AI models. You can access the calculated properties of different protein-ligand structures and use them for training in Pytorch based dataloaders. We provide a small sample of the dataset along with the repo.
 
-You can download the FULL dataset from Zenodo using links below:
+You can freely download the **FULL MISATO dataset** from Zenodo using the links below:
 
-- MD
-- QM
+- MD (133 GiB)
+- QM (0.3 GiB)
+- electronic densities (6 GiB)
+- MD restart and topology files (55 GiB)
  
-_Suggestions are always welcome!_
 
+```bash
+wget ...
+```
 
+**Start with the notebook [src/getting_started.ipynb](src/getting_started.ipynb) to :**
 
-
-
-**You can use the notebook src/getting_started.ipynb to :**
-
-- Understand the structures of our H5 files and read each molecule's properties.
+- Understand the structure of our dataset and how to access each molecule's properties.
 - Load the PyTorch Dataloaders of each dataset.
 - Load the PyTorch lightning Datamodules of each dataset.
 
+
+
+## 🚀  Quickstart
+
+We recommend to pull our MISATO image from DockerHub or to create your own image (see [docker/](docker/)).  The images use cuda version 11.8. We recommend to install on your own system a version of CUDA that is a least 11.8 to ensure that the drivers work correctly.
+
+```bash
+# clone project
+git clone https://github.com/sab148/MiSaTo-dataset.git
+cd MiSaTo-dataset
+```
+For singularity use:
+```bash
+# clone project
+singularity pull ...
+singularity shell misato.sif
+```
+
+For docker use: 
+
+```bash
+docker pull ...
+docker ...
+```
+
 <br>
 
-## Required packages:
-
-- torch>=1.10.0
-- pytorch-lightning==1.8.3
-- torch-geometric==2.0.4
-
-<br>
 
 ## Project Structure
 
@@ -68,29 +106,15 @@ _Suggestions are always welcome!_
 ```
 
 <br>
+<br>
 
-## 🚀  Quickstart
+## Required packages:
 
-We recommend to pull our misato image from DockerHub or to create your own image (see docker/).  The images use cuda version 11.8. We recommend to install on your own system a version of CUDA that is a least 11.8 to ensure that the drivers work correctly.
+- torch>=XX
+- pytorch-lightning==1.8.3
+- torch-geometric==XX
 
-```bash
-# clone project
-git clone https://github.com/sab148/MiSaTo-dataset.git
-cd MiSaTo-dataset
-```
-For singularity use:
-```bash
-# clone project
-singularity pull ...
-singularity shell misato.sif
-```
-
-For docker use: 
-
-```bash
-docker pull ...
-docker ...
-```
+<br>
 
 
 ## Installation using your own conda environment
@@ -100,7 +124,7 @@ In case you want to use conda for your own installation please create a new misa
 In order to install pytorch geometric we recommend to use pip (within conda) for installation and to follow the official installation instructions:[pytorch-geometric/install](
 https://pytorch-geometric.readthedocs.io/en/latest/install/installation.html)
 
-Depending on you CUDA version the instructions vary. We show an example for the cpu version.
+Depending on you CUDA version the instructions vary. We show an example for the CPU version.
 
 ```bash
 conda create --name misato python=3
@@ -120,41 +144,4 @@ conda install -c conda-forge ambertools
 ```
 
 
-
-```bash
-# [OPTIONAL] create virtual environment
-python3 -m venv misato_env/
-
-# activate the env
-source misato_env/bin/activate
-
-# install requirements
-pip install -r requirements.txt
-```
-Alternatively you can use anaconda to install the environment
-```bash
-
-# create conda env
-
-conda env create -f misato.yml
-# activate the env
-conda activate misato
-
-
-```
-## Singularity
-
-
-
-
-
-You can now go to src/getting_started.ipynb and discover with the MiSaTo dataset.
-
-## ❤️  Contributions
-
-Have a question? Found a bug? Missing a specific feature? Feel free to file a new issue, discussion or PR with respective title and description.
-
-Suggestions for improvements are always welcome!
-
-<br>
 
