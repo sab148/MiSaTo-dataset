@@ -98,13 +98,14 @@ bash docker/run_bash_in_container.sh
 │   ├── data                    
 │   │   ├── components           <- Datasets and transforms
 │   │   ├── md_datamodule.py     <- MD Lightning data module
-│   │   └── qm_datamodule.py     <- QM Lightning data module
-│   │
+│   │   ├── qm_datamodule.py     <- QM Lightning data module
+│   │   │
 │   │   └── processing           <- Skripts for preprocessing, inference and conversion
-│   │
+│   │      ├──...    
 │   ├── getting_started.ipynb     <- notebook : how to load data and interact with it
 │   └── inference.ipynb           <- notebook how to run inference
 │
+├── docker                    <- Dockerfile and execution script 
 └── README.md
 ```
 
