@@ -68,8 +68,8 @@ cd MiSaTo-dataset
 ```
 For singularity use:
 ```bash
-# clone project
-singularity pull ...
+# get the container image
+singularity pull docker://sab148/misato-dataset
 singularity shell misato.sif
 ```
 
