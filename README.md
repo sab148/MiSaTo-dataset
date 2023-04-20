@@ -76,8 +76,8 @@ singularity shell misato.sif
 For docker use: 
 
 ```bash
-docker pull ...
-docker ...
+sudo docker pull sab148/misato-dataset:latest
+bash docker/run_bash_in_container.sh
 ```
 
 <br>
@@ -87,8 +87,12 @@ docker ...
 
 ```
 ├── data                   <- Project data
-│
-│
+│   ├──MD 
+│   │   ├── h5_files           <- storage of dataset
+│   │   └── splits             <- train, val, test splits
+│   └──QM
+│   │   ├── h5_files           <- storage of dataset
+│   │   └── splits             <- train, val, test splits
 │
 ├── src                    <- Source code
 │   ├── data                    
@@ -96,12 +100,11 @@ docker ...
 │   │   ├── md_datamodule.py     <- MD Lightning data module
 │   │   └── qm_datamodule.py     <- QM Lightning data module
 │   │
+│   │   └── processing           <- Skripts for preprocessing, inference and conversion
 │   │
-│   └── getting_started.ipynb     <- Jupyter notebook : how to load h5 files, load dataset, datamodules and iterate over the data
-│   └── inference.ipynb           <- Jupyter notebook : how to run inference
+│   ├── getting_started.ipynb     <- notebook : how to load data and interact with it
+│   └── inference.ipynb           <- notebook how to run inference
 │
-├── .gitignore                <- List of files ignored by git
-├── requirements.txt          <- File for installing python dependencies
 └── README.md
 ```
 
