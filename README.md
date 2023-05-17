@@ -46,8 +46,8 @@ You can freely download the **FULL MISATO dataset** from Zenodo using the links 
  
 
 ```bash
-wget https://zenodo.org/record/7895636/files/tiny_md.hdf5
-wget https://zenodo.org/record/7895636/files/tiny_qm.hdf5
+wget -O data/MD/h5_files/MD.hdf5 https://zenodo.org/record/7895636/files/tiny_md.hdf5
+wget -O data/QM/h5_files/QM.hdf5 https://zenodo.org/record/7895636/files/tiny_qm.hdf5
 ```
 
 **Start with the notebook [src/getting_started.ipynb](src/getting_started.ipynb) to :**
