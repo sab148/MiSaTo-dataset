@@ -144,7 +144,7 @@ To run inference for MD you have to install ambertools. We recommend to install 
 ```bash
 conda create --name ambertools python=3
 conda activate ambertools
-conda install -c conda-forge ambertools
+conda install -c conda-forge ambertools nb_conda_kernels
 pip install h5py jupyter ipykernel==5.5.5 ipywidgets==7.6.3 nglview==2.7.7
 ```
 
