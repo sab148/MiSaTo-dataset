@@ -113,12 +113,6 @@ bash docker/run_bash_in_container.sh
 <br>
 <br>
 
-## Required packages:
-
-- torch>=XX
-- pytorch-lightning==1.8.3
-- torch-geometric==XX
-
 <br>
 
 
