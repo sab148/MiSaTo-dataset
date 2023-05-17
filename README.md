@@ -134,10 +134,14 @@ Depending on you CUDA version the instructions vary. We show an example for the 
 ```bash
 conda create --name misato python=3
 conda activate misato
-conda install -c anaconda h5py pandas ipykernel ipywidgets==7.7.2
-conda install -c conda-forge nglview pytorch-lightning==1.8.3
-pip install torch --extra-index-url https://download.pytorch.org/whl/cpu
-pip install pyg_lib torch_scatter torch_sparse torch_cluster torch_spline_conv torch_geometric -f https://data.pyg.org/whl/torch-1.13.0+cpu.html
+conda install -c anaconda h5py pandas pip
+pip3 install torch --index-url https://download.pytorch.org/whl/cu118 --no-cache
+pip install joblib matplotlib
+pip install pyg_lib torch_scatter torch_sparse torch_cluster torch_spline_conv -f https://data.pyg.org/whl/torch-2.0.0+cu118.html
+pip install pytorch-lightning==1.8.3
+pip install torch-geometric
+pip install ipykernel==5.5.5 ipywidgets==7.6.3 nglview==2.7.7
+
 ```
 
 To run inference for MD you have to install ambertools. We recommend to install it in a separate conda environment.
