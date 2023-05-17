@@ -129,7 +129,7 @@ In case you want to use conda for your own installation please create a new misa
 In order to install pytorch geometric we recommend to use pip (within conda) for installation and to follow the official installation instructions:[pytorch-geometric/install](
 https://pytorch-geometric.readthedocs.io/en/latest/install/installation.html)
 
-Depending on you CUDA version the instructions vary. We show an example for the CPU version.
+Depending on your CUDA version the instructions vary. We show an example for the CPU version.
 
 ```bash
 conda create --name misato python=3
