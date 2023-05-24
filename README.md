@@ -21,7 +21,7 @@ We are a drug discovery community project :hugs:
 
 Lets crack the **100+ ns** MD, **30000+ protein-ligand structures** and a whole new world of **AI models for drug discovery** together.
 
-Check out the paper!
+[Check out the paper!](MISATO.pdf)
 
 ![Alt text](logo.jpg?raw=true "MISATO")
 
@@ -46,8 +46,8 @@ You can freely download the **FULL MISATO dataset** from Zenodo using the links 
  
 
 ```bash
-wget -O data/MD/h5_files/MD.hdf5 https://zenodo.org/record/7895636/files/tiny_md.hdf5
-wget -O data/QM/h5_files/QM.hdf5 https://zenodo.org/record/7895636/files/tiny_qm.hdf5
+wget -O data/MD/h5_files/MD.hdf5 https://zenodo.org/record/7711953/files/MD.hdf5
+wget -O data/QM/h5_files/QM.hdf5 https://zenodo.org/record/7711953/files/QM.hdf5
 ```
 
 **Start with the notebook [src/getting_started.ipynb](src/getting_started.ipynb) to :**
